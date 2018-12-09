@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <script>
+      (function (win,doc) {
+          var metaEl;
+          function setViewport() {
+              var psdWidth = 640;
+              var metaContent = ['width=' + psdWidth,'user-scalable=no'];
+              var scale = window.screen.width / psdWidth;
+              var ua = navigator.userAgent;
+              metaContent.push('minimum-scale=' + scale);
+              metaContent.push('maximum-scale=' + scale);
+              var match = ua.match(/Android (\d+\.\d+)/);
+              if (match){
+                  metaContent.push('target-densitydpi=device-dpi');
+              }
+              metaEl = metaEl || doc.createElement('meta');
+              metaEl.setAttribute('name', 'viewport');
+              metaEl.setAttribute('content',metaContent.join(','));
+              doc.documentElement.firstElementChild.appendChild(metaEl);
+          }
+          setViewport();
+          win.addEventListener('resize',setViewport , false);
+      })(window,document);
+  </script>
+    <title>lottery-draw</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but lottery-draw doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
